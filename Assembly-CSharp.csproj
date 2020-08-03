@@ -262,6 +262,7 @@
     <Compile Include="Assets\Scripts\FoodConsumer.cs" />
     <Compile Include="Assets\Scripts\FoodController.cs" />
     <Compile Include="Assets\Scripts\SceneController.cs" />
+    <Compile Include="Assets\Scripts\SceneSwitcher.cs" />
     <Compile Include="Assets\Scripts\ScoreboardController.cs" />
     <Compile Include="Assets\Scripts\SnakeController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
@@ -898,6 +899,9 @@
     <Reference Include="Unity.2D.Sprite.Editor">
       <HintPath>C:/Users/Sri/Documents/UMKC/Unity/ARCoreCodelab/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Mobile.AndroidLogcat.Editor">
+      <HintPath>C:/Users/Sri/Documents/UMKC/Unity/ARCoreCodelab/Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
       <HintPath>C:/Users/Sri/Documents/UMKC/Unity/ARCoreCodelab/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
@@ -918,9 +922,6 @@
     </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Runtime">
       <HintPath>C:/Users/Sri/Documents/UMKC/Unity/ARCoreCodelab/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Mobile.AndroidLogcat.Editor">
-      <HintPath>C:/Users/Sri/Documents/UMKC/Unity/ARCoreCodelab/Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup></ItemGroup>

@@ -8,7 +8,9 @@ public class FoodController : MonoBehaviour
     private DetectedPlane detectedPlane;
     private GameObject foodInstance;
     private float foodAge;
-    private readonly float maxAge = 10f;
+    private readonly float maxAge = 5f;
+    private readonly float maxEnemyAge = 10f;
+    private SceneController sceneController;
 
     public GameObject[] foodModels;
     public GameObject[] badModels;
@@ -16,7 +18,7 @@ public class FoodController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        sceneController = GameObject.Find("SceneController").GetComponent<SceneController>();
     }
 
     // Update is called once per frame
@@ -39,18 +41,19 @@ public class FoodController : MonoBehaviour
             detectedPlane = detectedPlane.SubsumedBy;
         }
 
-        if ((foodInstance == null || foodInstance.activeSelf == false) && GetComponent<SceneController>().isGameActive)
+        if ((foodInstance == null || foodInstance.activeSelf == false) && sceneController.isGameActive)
         {
             SpawnFoodInstance();
             return;
         }
 
         foodAge += Time.deltaTime;
-        if (foodAge >= maxAge)
+        if (foodInstance != null && ((foodAge >= (foodInstance.CompareTag("food") ? maxAge : maxEnemyAge)) || !sceneController.isGameActive))
         {
             Destroy(foodInstance);
             foodInstance = null;
         }
+        
     }
 
     public void SetSelectedPlane(DetectedPlane selectedPlane)
@@ -64,10 +67,10 @@ public class FoodController : MonoBehaviour
         int foodOrBad = Random.Range(0, 10);
         GameObject foodItem;
 
-        foodItem = foodModels[Random.Range(0, foodModels.Length)];
+        // foodItem = foodModels[Random.Range(0, foodModels.Length)];
         
-        /*
-        if(foodOrBad > 6)
+        
+        if(foodOrBad > 2)
         {
             foodItem = foodModels[Random.Range(0, foodModels.Length)];
         }
@@ -75,7 +78,6 @@ public class FoodController : MonoBehaviour
         {
             foodItem = badModels[Random.Range(0, badModels.Length)];
         }
-        */
 
         // Pick a location.  This is done by selecting a vertex at random and then
         // a random point between it and the center of the plane.
@@ -93,21 +95,20 @@ public class FoodController : MonoBehaviour
         foodInstance = Instantiate(foodItem, position, Quaternion.identity,
                  anchor.transform);
 
-        foodInstance.tag = "food";
+        // foodInstance.tag = "food";
 
         // Set the tag.
-        /*
-        if (foodOrBad > 6)
+        if (foodOrBad > 2)
         {
             foodInstance.tag = "food";
+            foodInstance.transform.localScale = new Vector3(.05f, .05f, .05f);
         }
         else
         {
             foodInstance.tag = "bad";
+            foodInstance.transform.localScale = new Vector3(.1f, .1f, .1f);
         }
-        */
 
-        foodInstance.transform.localScale = new Vector3(.025f, .025f, .025f);
         foodInstance.transform.SetParent(anchor.transform);
         foodAge = 0;
 

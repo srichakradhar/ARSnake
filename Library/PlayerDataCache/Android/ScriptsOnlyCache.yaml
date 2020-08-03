@@ -12,6 +12,7 @@ ScriptsOnlyBuild:
     - GoogleARCore.Examples.Common.DetectedPlaneGenerator
     - GoogleARCore.Examples.Common.DetectedPlaneVisualizer
     - SceneController
+    - SceneSwitcher
     - ScoreboardController
     - Slithering
     - SnakeController
@@ -21,6 +22,9 @@ ScriptsOnlyBuild:
     - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.TileDragAndDropManager
+    Unity.Mobile.AndroidLogcat.Editor.dll:
+    - Unity.Android.Logcat.AndroidLogcatConsoleWindow
+    - Unity.Android.Logcat.AndroidLogcatManager
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro.dll:
@@ -39,8 +43,12 @@ ScriptsOnlyBuild:
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
+    - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.Image
+    - UnityEngine.UI.RawImage
+    - UnityEngine.UI.Text
   sceneClasses:
     Assets/Scenes/ARScene.unity:
     - Class: 1
@@ -61,8 +69,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
-    - Class: 49
-      Script: {instanceID: 0}
     - Class: 54
       Script: {instanceID: 0}
     - Class: 64
@@ -71,7 +77,9 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 74
       Script: {instanceID: 0}
-    - Class: 89
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
       Script: {instanceID: 0}
     - Class: 90
       Script: {instanceID: 0}
@@ -83,60 +91,56 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
-    - Class: 109
-      Script: {instanceID: 0}
     - Class: 111
       Script: {instanceID: 0}
     - Class: 114
+      Script: {instanceID: 11224}
+    - Class: 114
       Script: {instanceID: 11246}
     - Class: 114
-      Script: {instanceID: 11732}
+      Script: {instanceID: 11530}
     - Class: 114
-      Script: {instanceID: 12032}
+      Script: {instanceID: 11584}
     - Class: 114
-      Script: {instanceID: 12044}
+      Script: {instanceID: 11746}
     - Class: 114
-      Script: {instanceID: 12132}
+      Script: {instanceID: 12052}
     - Class: 114
-      Script: {instanceID: 12136}
+      Script: {instanceID: 12064}
     - Class: 114
-      Script: {instanceID: 12176}
+      Script: {instanceID: 12154}
     - Class: 114
-      Script: {instanceID: 12214}
+      Script: {instanceID: 12158}
     - Class: 114
-      Script: {instanceID: 12380}
+      Script: {instanceID: 12238}
     - Class: 114
-      Script: {instanceID: 12416}
+      Script: {instanceID: 12410}
     - Class: 114
-      Script: {instanceID: 12996}
+      Script: {instanceID: 12446}
     - Class: 114
-      Script: {instanceID: 13056}
+      Script: {instanceID: 13040}
     - Class: 114
-      Script: {instanceID: 13066}
+      Script: {instanceID: 13100}
     - Class: 114
-      Script: {instanceID: 13076}
+      Script: {instanceID: 13110}
     - Class: 114
-      Script: {instanceID: 13096}
+      Script: {instanceID: 13140}
     - Class: 114
-      Script: {instanceID: 13190}
+      Script: {instanceID: 13240}
     - Class: 114
-      Script: {instanceID: 13232}
+      Script: {instanceID: 13284}
     - Class: 114
-      Script: {instanceID: 13364}
+      Script: {instanceID: 13420}
     - Class: 114
-      Script: {instanceID: 13454}
+      Script: {instanceID: 13510}
     - Class: 114
-      Script: {instanceID: 13458}
+      Script: {instanceID: 13514}
     - Class: 114
-      Script: {instanceID: 13588}
+      Script: {instanceID: 13646}
     - Class: 114
-      Script: {instanceID: 13652}
+      Script: {instanceID: 13712}
     - Class: 114
-      Script: {instanceID: 13716}
-    - Class: 114
-      Script: {instanceID: 13872}
-    - Class: 114
-      Script: {instanceID: 14024}
+      Script: {instanceID: 14094}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -147,13 +151,86 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 196
       Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
     - Class: 222
       Script: {instanceID: 0}
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
       Script: {instanceID: 0}
-    - Class: 258
+    Assets/Scenes/SplashScene.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 49
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 109
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 11224}
+    - Class: 114
+      Script: {instanceID: 11246}
+    - Class: 114
+      Script: {instanceID: 11530}
+    - Class: 114
+      Script: {instanceID: 11584}
+    - Class: 114
+      Script: {instanceID: 11690}
+    - Class: 114
+      Script: {instanceID: 12158}
+    - Class: 114
+      Script: {instanceID: 12200}
+    - Class: 114
+      Script: {instanceID: 12816}
+    - Class: 114
+      Script: {instanceID: 13100}
+    - Class: 114
+      Script: {instanceID: 13120}
+    - Class: 114
+      Script: {instanceID: 13420}
+    - Class: 114
+      Script: {instanceID: 13510}
+    - Class: 114
+      Script: {instanceID: 13776}
+    - Class: 114
+      Script: {instanceID: 13934}
+    - Class: 114
+      Script: {instanceID: 14094}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -338,6 +415,12 @@ ScriptsOnlyBuild:
     className: HelloARController
   - hash:
       serializedVersion: 2
+      Hash: e9539b36af987b1fc4d5169f5d2f3d29
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SceneSwitcher
+  - hash:
+      serializedVersion: 2
       Hash: 8aa3d6ccbcb54ee8db6c1229854adaaa
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -350,7 +433,7 @@ ScriptsOnlyBuild:
     className: SignalAsset
   - hash:
       serializedVersion: 2
-      Hash: 726c52621299b0d5a8694605bceedb1b
+      Hash: 652a6dd9ecc81f683107198a24863278
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SnakeController
@@ -476,7 +559,7 @@ ScriptsOnlyBuild:
     className: WarpTextExample
   - hash:
       serializedVersion: 2
-      Hash: 5281f870235a7e634c81ee8b7a9e1846
+      Hash: 6f8416888ffcaa101d176c1f058ce7b8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SceneController
@@ -1214,5 +1297,6 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   platform: 13
   scenePathNames:
+  - Assets/Scenes/SplashScene.unity
   - Assets/Scenes/ARScene.unity
-  playerPath: C:/Users/Sri/Documents/UMKC/Unity/ARCoreCodelab/Snake.apk
+  playerPath: C:/Users/Sri/Documents/UMKC/Unity/SnAkeR/SnAkeR.apk

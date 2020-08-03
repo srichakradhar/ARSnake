@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using GoogleARCore;
 using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneController : MonoBehaviour
 {
     public Camera firstPersonCamera;
     public ScoreboardController scoreboard;
     public SnakeController snakeController;
-
+    public GameObject snake;
+    public ParticleSystem explosionParticle;
+    public Button restartButton;
+    public Canvas canvas;
     public TextMeshProUGUI gameOverText;
 
     public bool isGameActive;
@@ -18,8 +23,9 @@ public class SceneController : MonoBehaviour
     void Start()
     {
         QuitOnConnectionErrors();
-        isGameActive = false;
-}
+        isGameActive = true;
+        explosionParticle.transform.localScale = new Vector3(.01f, .01f, .01f);
+    }
 
     // Update is called once per frame
     void Update()
@@ -33,6 +39,7 @@ public class SceneController : MonoBehaviour
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
         ProcessTouches();
+        
 
         scoreboard.SetScore(snakeController.GetLength());
     }
@@ -70,10 +77,12 @@ public class SceneController : MonoBehaviour
         if (Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
         {
             SetSelectedPlane(hit.Trackable as DetectedPlane);
-            isGameActive = true;
         }
 
-        GetComponent<FoodController>().SpawnFoodInstance();
+        if (isGameActive)
+        {
+            GetComponent<FoodController>().SpawnFoodInstance();
+        }
     }
 
     private void SetSelectedPlane(DetectedPlane selectedPlane)
@@ -86,8 +95,35 @@ public class SceneController : MonoBehaviour
 
     public void GameOver()
     {
-        gameOverText.gameObject.SetActive(true);
+        explosionParticle.Play();
+        canvas.gameObject.SetActive(true);
         isGameActive = false;
+        gameOverText.gameObject.SetActive(true);
+        restartButton.gameObject.SetActive(true);
+        // restartButton.GetComponentInChildren<Text>().text = "RESTART";
+        snakeController.playerAudio.PlayOneShot(snakeController.dieSound, 1.0f);
+        StartCoroutine(WaitAndDisable(1.5f));
+        Debug.Log("Game Over!!!");
+    }
+
+    // suspend execution for waitTime seconds
+    IEnumerator WaitAndDisable(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        snake.SetActive(isGameActive);
+    }
+
+    public void RestartGame()
+    {
+        isGameActive = true;
+        snake.SetActive(true);
+        canvas.gameObject.SetActive(false);
+        gameOverText.gameObject.SetActive(false);
+        restartButton.gameObject.SetActive(false);
+    }
+    public void doExitGame()
+    {
+        Application.Quit();
     }
 
 }

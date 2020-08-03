@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GoogleARCore;
+using UnityEngine.SceneManagement;
 
 public class SnakeController : MonoBehaviour
 {
     private DetectedPlane detectedPlane;
-
+    private GameObject snake;
     public GameObject snakeHeadPrefab;
     private GameObject snakeInstance;
 
@@ -14,18 +15,23 @@ public class SnakeController : MonoBehaviour
     public Camera firstPersonCamera;
     // Speed to move.
     public float speed = 20f;
-
+    private SceneController sceneController;
+    public AudioSource playerAudio;
+    public AudioClip eatSound;
+    public AudioClip dieSound;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        sceneController = GameObject.Find("SceneController").GetComponent<SceneController>();
+        snake = GameObject.Find("Snake");
+        playerAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (snakeInstance == null || snakeInstance.activeSelf == false)
+        if (snakeInstance == null || snakeInstance.activeSelf == false || !sceneController.isGameActive)
         {
             pointer.SetActive(false);
             return;
